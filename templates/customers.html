@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>👤 Customer Management</h1>
+
+    <h2>Register Customer</h2>
+
+    <form method="POST">
+
+        <p>
+            <label>Name:</label><br>
+            <input type="text" name="name" required>
+        </p>
+
+        <p>
+            <label>Phone:</label><br>
+            <input type="text" name="phone" required>
+        </p>
+
+        <p>
+            <label>Email:</label><br>
+            <input type="email" name="email">
+        </p>
+
+        <p>
+            <label>Address:</label><br>
+            <textarea name="address"></textarea>
+        </p>
+
+        <button type="submit">Register Customer</button>
+
+    </form>
+
+    <h2>Registered Customers</h2>
+
+    {% if customers %}
+
+        {% for customer in customers %}
+
+        <div class="room-card">
+
+            <h3>{{ customer.name }}</h3>
+
+            <p>Phone: {{ customer.phone }}</p>
+            <p>Email: {{ customer.email }}</p>
+            <p>Address: {{ customer.address }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No customers registered yet.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">
+        <button>Back to Home</button>
+    </a>
+
+</body>
+</html>

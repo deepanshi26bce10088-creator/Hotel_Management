@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Rooms</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Rooms</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>🏨 Hotel Management System</h1>
+
+    <h2>Our Rooms</h2>
+
+    {% for room in rooms %}
+
+    <div class="room-card">
+
+        <h3>Room {{ room.room_number }}</h3>
+
+        <p><b>Type:</b> {{ room.room_type }}</p>
+
+        <p><b>Price:</b> ₹{{ room.price }} / night</p>
+
+        <p><b>Status:</b> {{ room.status }}</p>
+
+        {% if room.status == "Available" %}
+            <a href="/booking">
+                <button>Book This Room</button>
+            </a>
+        {% else %}
+            <button disabled>Not Available</button>
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/">
+        <button>Back to Home</button>
+    </a>
+
+</body>
+</html>
+</body>
+</html>
